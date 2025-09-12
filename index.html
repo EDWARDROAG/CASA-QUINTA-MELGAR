@@ -164,18 +164,20 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
     }
-    .fotos-grid img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    .fotos-grid img:hover {
-      transform: scale(1.05);
-    }
+   .fotos-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px; /* ✅ Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* ✅ Sombrilla debajo */
+  transition: transform 0.3s, box-shadow 0.3s; /* ✅ Animación suave */
+}
+
+.fotos-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6); /* ✅ Más sombra al pasar el mouse */
+}
 
     /* Lightbox */
     .lightbox {
@@ -259,6 +261,11 @@
   justify-content: center;
   gap: 15px;
   margin: 30px 0;
+}
+#introVideo {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 15px;
 }
 
 /* Estilos de cada botón */
