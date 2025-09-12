@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Quinta Melgar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: url('img/fondo.jpeg') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to bottom, rgba(0,150,200,0.7), rgba(0,200,150,0.5));
+      border-bottom: 5px solid #00ffaa;
+    }
+.titulo-principal {
+  font-size: 4.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 10px #00ffe0, 0 0 20px #00aaff, 0 0 30px #0066ff;
+  animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+  from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00aaff; }
+  to   { text-shadow: 0 0 20px #00ffff, 0 0 30px #0077ff; }
+}
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: #fff;
+      background: linear-gradient(45deg, #00b4d8, #009688);
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .boton:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #009688, #00b4d8);
+    }
+
+    .icono-whatsapp {
+      width: 28px;
+      height: 28px;
+    }
+    
+
+    .boton-mapa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background: linear-gradient(45deg, #34a853, #2e7d32); /* colores tipo Google Maps */
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.boton-mapa:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #2e7d32, #34a853);
+}
+
+.icono-mapa {
+  width: 22px;
+  height: 22px;
+}
+
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+      text-shadow: 3px 3px 10px #000;
+      color: #fff;
+    }
+
+    header p {
+      font-size: 1.3em;
+      margin-top: 15px;
+      color: #eaffff;
+    }
+
+    /* Accesos rápidos */
+    .accesos-rapidos {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 180, 216, 0.15);
+      border-top: 4px solid #00ffaa;
+      border-bottom: 4px solid #00ffaa;
+    }
+    .accesos-rapidos h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .accesos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .acceso {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      color: #000;
+      font-weight: bold;
+    }
+    .acceso img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+    .acceso span {
+      display: block;
+      padding: 10px;
+      background: #00b4d8;
+      color: #fff;
+    }
+    .acceso:hover {
+      transform: scale(1.05);
+    }
+
+    /* Galería de fotos */
+    .fotos {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 180, 216, 0.15);
+      border-top: 4px solid #00ffaa;
+      border-bottom: 4px solid #00ffaa;
+    }
+    .fotos h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .fotos p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      color: #eaffff;
+    }
+    .fotos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .fotos-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .fotos-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      text-align: center;
+    }
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      margin-top: 5%;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+    .close-btn:hover {
+      color: #ff4d4d;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      margin-top: -50px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 2em;
+      user-select: none;
+      transition: 0.3s;
+    }
+    .prev { left: 10%; }
+    .next { right: 10%; }
+    .prev:hover, .next:hover {
+      color: #00ffaa;
+    }
+
+    /* Modal genérico */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      width: 90%;
+      max-width: 800px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .modal video {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+/* Contenedor de los 3 botones */
+.botones-informacion {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+/* Estilos de cada botón */
+.btn-info {
+  background: linear-gradient(45deg, #0078D7, #00b4d8);
+  color: white;
+  border: none;
+  padding: 15px 30px;   /* ✅ más grande */
+  font-size: 1.2rem;    /* ✅ letras más grandes */
+  border-radius: 30px;  /* ✅ redondeado más bonito */
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.3s;
+}
+.btn-info:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #005bb5, #009688);
+}
+
+/* Fondo oscuro del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; 
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-content, 
+.modal-contenido {   /* tu modal de comentarios usa .modal-contenido */
+  background: white;
+  color: black; /* ✅ para que el texto no quede blanco */
+  padding: 25px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  text-align: left;
+  position: relative;
+}
+
+/* Botón de cerrar (X) */
+.close-btn, .cerrar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+.close-btn:hover, .cerrar:hover {
+  color: darkred;
+}
+
+/* Estilo de los comentarios */
+.comentario {
+  background: #f5f5f5;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+.respuesta {
+  margin-top: 5px;
+  padding-left: 15px;
+  border-left: 3px solid #0078D7;
+  color: #333;
+  font-size: 0.9em;
+}
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(to right, rgba(0,150,200,0.8), rgba(0,200,150,0.8));
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #fff;
+      border-top: 4px solid #00ffaa;
+    }
+    .social-box {
+      margin: 30px auto 0;
+      padding: 20px;
+      max-width: 600px;
+      background: #009688;
+      border: 2px solid #00ffaa;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .social-links {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .social-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: transform 0.3s;
+    }
+    .social-item:hover {
+      transform: scale(1.1);
+    }
+    .social-item img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 5px;
+    }
+
+
+/* Estilos botón flotante WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.whatsapp-float a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  padding: 10px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 200, 0, 0.7);
+  animation: pulso 1.5s infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 200, 0, 0.9);
+}
+
+.whatsapp-float img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.whatsapp-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Animación de pulso */
+@keyframes pulso {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Modal de bienvenida -->
+  <div id="videoModal" class="modal" style="display:flex;">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <video id="introVideo" autoplay muted playsinline>
+        <source src="videos/video_inicio.mp4" type="video/mp4">
+        Tu navegador no soporta video en HTML5.
+      </video>
+    </div>
+  </div>
+
+  <!-- Modal Mini Tour -->
+  <div id="tourModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeTour">&times;</span>
+      <video id="videoTour" controls>
+        <source src="videos/mini_tour.mp4" type="video/mp4">
+        Tu navegador no soporta video en HTML5.
+      </video>
+    </div>
+  </div>
+
+  <!-- Lightbox galería -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn" id="closeLightbox">&times;</span>
+    <img id="lightboxImg" src="">
+    <a class="prev" id="prev">&#10094;</a>
+    <a class="next" id="next">&#10095;</a>
+  </div>
+
+  <header>
+    <h1 class="titulo-principal">Casa Quinta Melgar</h1>
+    <p>💦 “Casa Quinta Melgar: Vive el descanso que mereces”</p>
+    <a href="https://wa.me/573125475619?text=Hola%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n" 
+   class="boton" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <img src="img/whatsapp.png" class="icono-whatsapp"> Más información
+</a>
+
+<br>
+
+<!-- Botón más pequeño debajo -->
+<a href="https://www.google.com/maps/dir/?api=1&destination=Melgar,Tolima,Colombia" 
+   class="boton-mapa" target="_blank" rel="noopener noreferrer">
+  <img src="img/maps.png" class="icono-mapa"> Cómo llegar
+</a>
+  </header>
+
+  <!-- Accesos rápidos -->
+  <section class="accesos-rapidos">
+    <h2> Accesos Rápidos</h2>
+    <div class="accesos-grid">
+      <div class="acceso" id="btnMiniTour">
+        <img src="img/imagen (10).jpeg" alt="Mini Tour">
+        <span> Mini Tour</span>
+      </div>
+      <div class="acceso" id="btnGaleria">
+        <img src="img/habitaciones.jpeg" alt="Galería de Fotos">
+        <span> Galería</span>
+      </div>
+      <div class="acceso" id="btnVideos">
+        <img src="img/mini_tour.jpg" alt="Videos">
+        <span>Videos</span>
+      </div>
+      <div class="acceso" id="btnMapa">
+        <img src="img/mapa.PNG" alt="Mapa">
+        <span> Ver Mapa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de fotos -->
+  <section class="fotos">
+    <h2> Galería de Fotos</h2>
+    <p>Conoce cada rincón de nuestra Casa Quinta</p>
+    <div class="fotos-grid">
+      <img src="img/piscina.jpeg" alt="Piscina" class="foto">
+      <img src="img/habitaciones.jpeg" alt="Habitaciones" class="foto">
+      <img src="img/zona_bbq.jpeg" alt="Zona BBQ" class="foto">
+      <img src="img/zonas_verdes.jpeg" alt="Zonas verdes" class="foto">
+      <img src="img/casa_completa.jpeg" alt="Casa completa" class="foto">
+      <img src="img/diversion_familiar.jpeg" alt="Diversión en familia" class="foto">
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="mapa-section">
+    <div id="mapaContainer" class="mapa-container" style="display:none;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.934364049317!2d-74.635!3d4.214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMTInNTAuNCJOIDc0wrAzOCc1NC4wIlc!5e0!3m2!1ses!2sco!4v1694099999999!5m2!1ses!2sco" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Melgar,Tolima,Colombia" 
+        target="_blank" class="btn-como-llegar"> Cómo llegar</a>
+    </div>
+  </section>
+
+
+
+<!-- Botones juntos -->
+<div class="botones-informacion">
+  <button id="openFAQ" class="btn-info">Preguntas Frecuentes</button>
+  <button id="btnComentarios" class="btn-info">Calificación de nuestros clientes</button>
+  <button id="openTerms" class="btn-info">Ver Términos y Condiciones</button>
+</div>
+
+<!-- Modal FAQ -->
+<div id="faqModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeFAQ">&times;</span>
+    <h2>❓ Preguntas Frecuentes</h2>
+    <p><strong>¿Cuál es la capacidad máxima de la casa?</strong><br> La casa tiene capacidad para hasta 20 personas cómodamente.</p>
+    <p><strong>¿Se permiten mascotas?</strong><br> Sí, las mascotas son bienvenidas, siempre bajo el cuidado de sus dueños.</p>
+    <p><strong>¿A qué hora es el check-in y el check-out?</strong><br> El check-in es a partir de las 3:00 p.m. y el check-out a las 12:00 p.m.</p>
+    <p><strong>¿La piscina es privada?</strong><br> Sí, la piscina es de uso exclusivo para los huéspedes.</p>
+    <p><strong>¿Cómo se realiza el pago de la reserva?</strong><br> Se confirma con un anticipo del 50% y el resto se paga al momento del ingreso.</p>
+  </div>
+</div>
+
+<!-- Modal Comentarios -->
+<div id="modalComentarios" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar">&times;</span>
+    <section id="comentarios">
+      <h2>Comentarios de nuestros visitantes</h2>
+      
+      <!-- Comentarios predeterminados -->
+      <div class="comentario">
+        <p><strong>Laura Gómez</strong> ⭐⭐⭐⭐⭐</p>
+        <p>"Hermosa casa, todo muy limpio y organizado. ¡Volveré pronto!"</p>
+        <div class="respuesta">
+          <p><strong>Casa Quinta Melgar:</strong> ¡Gracias Laura! Siempre bienvenida 🌴</p>
+        </div>
+      </div>
+
+      <div class="comentario">
+        <p><strong>Carlos Méndez</strong> ⭐⭐⭐⭐☆</p>
+        <p>"Muy buena experiencia, la piscina espectacular."</p>
+        <div class="respuesta">
+          <p><strong>Casa Quinta Melgar:</strong> ¡Nos alegra que disfrutara, Carlos!</p>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <h3>Deja tu comentario</h3>
+      <form id="formComentario">
+        <input type="text" id="nombre" placeholder="Tu nombre" required><br>
+        <select id="estrellas" required>
+          <option value="">Calificación</option>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐☆</option>
+          <option value="3">⭐⭐⭐☆☆</option>
+          <option value="2">⭐⭐☆☆☆</option>
+          <option value="1">⭐☆☆☆☆</option>
+        </select><br>
+        <textarea id="texto" placeholder="Escribe tu comentario..." required></textarea><br>
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div id="listaComentarios"></div>
+    </section>
+  </div>
+</div>
+
+<!-- Modal Términos -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeTerms">&times;</span>
+    <h2>📜 Términos y Condiciones</h2>
+    <p><strong>Reservas:</strong> Las reservas se confirman con el pago del 50% del valor total. El saldo se paga al momento del check-in.</p>
+    <p><strong>Cancelaciones:</strong> Las cancelaciones con más de 7 días de anticipación permiten reprogramar la fecha. Con menos de 7 días no hay devolución del anticipo.</p>
+    <p><strong>Uso de la propiedad:</strong> Está prohibido causar daños a las instalaciones, generar ruidos excesivos después de las 11:00 p.m. y permitir el ingreso de personas no registradas.</p>
+    <p><strong>Check-in y check-out:</strong> El ingreso es desde las 3:00 p.m. y la salida hasta las 12:00 p.m.</p>
+    <p><strong>Responsabilidad:</strong> Los huéspedes son responsables de sus pertenencias y de cualquier daño causado a la propiedad.</p>
+    <p><strong>Mascotas:</strong> Permitidas bajo el cuidado de los huéspedes.</p>
+  </div>
+</div>
+
+<!-- Botón flotante WhatsApp -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/573125475619?text=Hola%2C%20me%20interesa%20reservar" target="_blank">
+  <img src="img/whatsapp.png" alt="WhatsApp">
+  <span class="whatsapp-text">Reserva Aquí</span>
+</a>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <p> ¡Tu momento de descanso comienza aquí!  <br> Casa Quinta en Melgar – Reserva ya </p>
+    <div class="social-box">
+      <div class="social-links">
+        <a href="https://facebook.com/tuPagina" target="_blank" class="social-item">
+          <img src="img/facebook.png" alt="Facebook"><span>Facebook</span>
+        </a>
+        <a href="https://twitter.com/tuPagina" target="_blank" class="social-item">
+          <img src="img/twitter.png" alt="Twitter"><span>Twitter</span>
+        </a>
+        <a href="https://www.tiktok.com/@tuPagina" target="_blank" class="social-item">
+          <img src="img/tiktok.png" alt="TikTok"><span>TikTok</span>
+        </a>
+        <a href="https://instagram.com/tuPagina" target="_blank" class="social-item">
+          <img src="img/instagram.png" alt="Instagram"><span>Instagram</span>
+        </a>
+      </div>
+    </div>
+    </footer>
+
+  <script>
+    window.onload = function() {
+      const modal = document.getElementById("videoModal");
+      const videoIntro = document.getElementById("introVideo");
+      const closeBtn = document.getElementById("closeModal");
+
+      // Cierra modal de bienvenida
+      videoIntro.onended = () => { modal.style.display = "none"; };
+      closeBtn.onclick = () => { modal.style.display = "none"; videoIntro.pause(); };
+
+      // Mini tour
+      const tourModal = document.getElementById("tourModal");
+      const abrirTour = document.getElementById("btnMiniTour");
+      const closeTour = document.getElementById("closeTour");
+      const videoTour = document.getElementById("videoTour");
+      abrirTour.onclick = () => { tourModal.style.display = "flex"; videoTour.play(); };
+      closeTour.onclick = () => { tourModal.style.display = "none"; videoTour.pause(); };
+
+      // Galería lightbox
+      const fotosGaleria = document.querySelectorAll(".fotos-grid img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const closeLightbox = document.getElementById("closeLightbox");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      let currentIndex = 0;
+
+      fotosGaleria.forEach((foto, index) => {
+        foto.addEventListener("click", () => {
+          lightbox.style.display = "block";
+          lightboxImg.src = foto.src;
+          currentIndex = index;
+        });
+      });
+      closeLightbox.onclick = () => { lightbox.style.display = "none"; };
+      prevBtn.onclick = () => {
+        currentIndex = (currentIndex === 0) ? fotosGaleria.length - 1 : currentIndex - 1;
+        lightboxImg.src = fotosGaleria[currentIndex].src;
+      };
+      nextBtn.onclick = () => {
+        currentIndex = (currentIndex === fotosGaleria.length - 1) ? 0 : currentIndex + 1;
+        lightboxImg.src = fotosGaleria[currentIndex].src;
+      };
+
+      // Accesos rápidos
+      document.getElementById("btnGaleria").onclick = () => {
+        document.querySelector(".fotos").scrollIntoView({behavior:"smooth"});
+      };
+      document.getElementById("btnVideos").onclick = () => {
+        alert("Aquí puedes enlazar a otra sección de videos adicionales");
+      };
+      document.getElementById("btnMapa").onclick = () => {
+        const mapa = document.getElementById("mapaContainer");
+        mapa.style.display = (mapa.style.display === "block") ? "none" : "block";
+        mapa.scrollIntoView({behavior:"smooth"});
+      };
+    };
+
+    // Abrir y cerrar modal
+const modal = document.getElementById("modalComentarios");
+const btn = document.getElementById("btnComentarios");
+const span = document.getElementsByClassName("cerrar")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+// Modal Términos y Condiciones
+const openTerms = document.getElementById("openTerms");
+const termsModal = document.getElementById("termsModal");
+const closeTerms = document.getElementById("closeTerms");
+
+
+openTerms.onclick = (e) => {
+e.preventDefault();
+termsModal.style.display = "flex";
+};
+
+
+closeTerms.onclick = () => {
+termsModal.style.display = "none";
+};
+
+
+// Modal FAQ
+const openFAQ = document.getElementById("openFAQ");
+const faqModal = document.getElementById("faqModal");
+const closeFAQ = document.getElementById("closeFAQ");
+
+
+openFAQ.onclick = (e) => {
+e.preventDefault();
+faqModal.style.display = "flex";
+};
+
+
+closeFAQ.onclick = () => {
+faqModal.style.display = "none";
+};
+
+
+// Cerrar modal si se hace clic afuera
+window.onclick = (e) => {
+if (e.target === termsModal) {
+termsModal.style.display = "none";
+}
+if (e.target === faqModal) {
+faqModal.style.display = "none";
+}
+};
+
+  </script>
+</body>
+</html>
