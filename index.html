@@ -434,6 +434,21 @@
   100% { transform: scale(1); }
 }
 
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 2rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    padding: 50px 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 100%;
+  }
+}
   </style>
 </head>
 
@@ -443,9 +458,8 @@
     <div class="modal-content">
       <span class="close-btn" id="closeModal">&times;</span>
       <video id="introVideo" autoplay muted playsinline>
-        <source src="videos/video_inicio.mp4" type="video/mp4">
-        Tu navegador no soporta video en HTML5.
-      </video>
+  <source src="videos/video_inicio.mp4" type="video/mp4">
+</video>
     </div>
   </div>
 
@@ -453,10 +467,9 @@
   <div id="tourModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" id="closeTour">&times;</span>
-      <video id="videoTour" controls>
-        <source src="videos/mini_tour.mp4" type="video/mp4">
-        Tu navegador no soporta video en HTML5.
-      </video>
+      <video id="videoTour" controls playsinline muted>
+  <source src="videos/mini_tour.mp4" type="video/mp4">
+</video>
     </div>
   </div>
 
