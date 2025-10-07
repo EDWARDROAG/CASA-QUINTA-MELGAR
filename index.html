@@ -398,8 +398,23 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 999;
+  z-index: 13000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  padding: 10px 16px;
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
 }
+
+.whatsapp-float img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
 
 .whatsapp-float a {
   display: flex;
@@ -499,60 +514,53 @@
 <br>
 
 <!-- Botón más pequeño debajo -->
-<a href="https://www.google.com/maps/dir/?api=1&destination=Melgar,Tolima,Colombia" 
+<a href="https://www.google.com/maps/dir/?api=1&destination=4.201032874854225,-74.62862490461856" 
    class="boton-mapa" target="_blank" rel="noopener noreferrer">
   <img src="img/maps.png" class="icono-mapa"> Cómo llegar
 </a>
   </header>
 
   <!-- Accesos rápidos -->
-  <section class="accesos-rapidos">
-    <h2> Accesos Rápidos</h2>
-    <div class="accesos-grid">
-      <div class="acceso" id="btnMiniTour">
-        <img src="img/mini_tour.mp4" alt="Mini Tour">
-        <span> Mini Tour</span>
-      </div>
-      <div class="acceso" id="btnGaleria">
-        <img src="img/habitaciones.jpeg" alt="Galería de Fotos">
-        <span> Galería</span>
-      </div>
-      <div class="acceso" id="btnVideos">
-        <img src="img/mini_tour.jpg" alt="Videos">
-        <span>Videos</span>
-      </div>
-      <div class="acceso" id="btnMapa">
-        <img src="img/mapa.PNG" alt="Mapa">
-        <span> Ver Mapa</span>
-      </div>
+<section class="accesos-rapidos">
+  <h2>Accesos Rápidos</h2>
+  <div class="accesos-grid">
+    <div class="acceso" id="btnMiniTour">
+      <img src="img/mini_tour.mp4" alt="Mini Tour">
+      <span>Mini Tour</span>
     </div>
-  </section>
 
-  <!-- Galería de fotos -->
-  <section class="fotos">
-    <h2> Galería de Fotos</h2>
-    <p>Conoce cada rincón de nuestra Casa Quinta</p>
-    <div class="fotos-grid">
-      <img src="img/piscina.jpeg" alt="Piscina" class="foto">
-      <img src="img/habitaciones.jpeg" alt="Habitaciones" class="foto">
-      <img src="img/zona_bbq.jpeg" alt="Zona BBQ" class="foto">
-      <img src="img/zonas_verdes.jpeg" alt="Zonas verdes" class="foto">
-      <img src="img/casa_completa.jpeg" alt="Casa completa" class="foto">
-      <img src="img/diversion_familiar.jpeg" alt="Diversión en familia" class="foto">
-    </div>
-  </section>
+    <!-- Botón de Galería -->
+    <a href="galeria.html" target="_blank" class="acceso" id="btnGaleria">
+      <img src="img/habitaciones.jpeg" alt="Galería de Fotos">
+      <!-- <span>Galería</span> --> <!-- Opcional, puedes quitarlo -->
+    </a>
 
-  <!-- Mapa -->
-  <section class="mapa-section">
-    <div id="mapaContainer" class="mapa-container" style="display:none;">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.934364049317!2d-74.635!3d4.214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMTInNTAuNCJOIDc0wrAzOCc1NC4wIlc!5e0!3m2!1ses!2sco!4v1694099999999!5m2!1ses!2sco" 
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-      </iframe>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Melgar,Tolima,Colombia" 
-        target="_blank" class="btn-como-llegar"> Cómo llegar</a>
+    <div class="acceso" id="btnVideos">
+      <img src="img/mini_tour.jpg" alt="Videos">
+      <span>Videos</span>
     </div>
-  </section>
+
+    <div class="acceso" id="btnMapa">
+      <img src="img/mapa.PNG" alt="Mapa">
+      <span>Ver Mapa</span>
+    </div>
+  </div>
+</section>
+
+<section class="mapa-section">
+  <div id="mapaContainer" class="mapa-container" style="display:none;">
+    <iframe
+      src="https://www.google.com/maps?q=4.201032874854225,-74.62862490461856&hl=es&z=17&output=embed"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=4.201032874854225,-74.62862490461856" 
+       target="_blank" class="btn-como-llegar">Cómo llegar</a>
+  </div>
+</section>
 
 
 
@@ -651,9 +659,7 @@
         <a href="https://www.facebook.com/profile.php?id=61580426685856" target="_blank" class="social-item">
           <img src="img/facebook.png" alt="Facebook"><span>Facebook</span>
         </a>
-        <a href="https://twitter.com/tuPagina" target="_blank" class="social-item">
-          <img src="img/twitter.png" alt="Twitter"><span>Twitter</span>
-        </a>
+        
         <a href="https://www.tiktok.com/@casa.quinta.melgar?_t=ZS-8zhsq820UlE&_r=1" target="_blank" class="social-item">
           <img src="img/tiktok.png" alt="TikTok"><span>TikTok</span>
         </a>
@@ -784,6 +790,7 @@ if (e.target === faqModal) {
 faqModal.style.display = "none";
 }
 };
+
 
   </script>
 </body>

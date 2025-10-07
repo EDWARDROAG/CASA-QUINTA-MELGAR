@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Casa Quinta Melgar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="150x150" href="img/logo.png">
+  <style>
+    body{ font-family:'Poppins',sans-serif; margin:0; background:#0d0d0d; color:#fff; text-align:center; }
+    h1{ margin:30px 0; font-size:2.5rem; }
+    .fotos-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:15px; max-width:1200px; margin:0 auto; padding:20px }
+    .fotos-grid img{ width:100%; height:200px; object-fit:cover; border-radius:12px; cursor:pointer; transition:transform .25s }
+    .fotos-grid img:hover{ transform:scale(1.03) }
+
+    /* Lightbox */
+    .lightbox{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:12000; }
+    .lightbox.open{ display:flex }
+    .lightbox img{ max-width:90%; max-height:90%; border-radius:12px }
+    .close-btn, .prev, .next{ position:absolute; color:#fff; cursor:pointer; user-select:none; font-size:2em; }
+    .close-btn{ top:20px; right:30px; }
+    .prev{ left:10px; top:50%; transform:translateY(-50%) }
+    .next{ right:10px; top:50%; transform:translateY(-50%) }
+  </style>
+</head>
+<body>
+  <h1>Galería Casa Quinta Melgar</h1>
+  <div class="fotos-grid" id="galeria">
+    <!-- Aquí se agregarán las imágenes -->
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn" id="closeLightbox">&times;</span>
+    <span class="prev" id="prev">&#10094;</span>
+    <img id="lightboxImg" src="" alt="Imagen ampliada">
+    <span class="next" id="next">&#10095;</span>
+  </div>
+
+  <script>
+    // Lista de imágenes (puedes generar esto con tu script)
+    const imagenes = [
+      "img/piscina.jpeg",
+      "img/habitaciones.jpeg",
+      "img/zona_bbq.jpeg",
+      "img/zonas_verdes.jpeg",
+      "img/casa_completa.jpeg",
+      "img/diversion_familiar.jpeg"
+    ];
+
+    const galeria = document.getElementById('galeria');
+    imagenes.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      galeria.appendChild(img);
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeLightbox = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    let idx = 0;
+    const fotos = Array.from(galeria.querySelectorAll('img'));
+
+    fotos.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        idx = i;
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    prevBtn.addEventListener('click', () => {
+      idx = (idx === 0) ? fotos.length - 1 : idx - 1;
+      lightboxImg.src = fotos[idx].src;
+    });
+    nextBtn.addEventListener('click', () => {
+      idx = (idx === fotos.length - 1) ? 0 : idx + 1;
+      lightboxImg.src = fotos[idx].src;
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(lightbox.classList.contains('open')){
+        if(e.key === 'ArrowLeft') prevBtn.click();
+        if(e.key === 'ArrowRight') nextBtn.click();
+        if(e.key === 'Escape') closeLightbox.click();
+      }
+    });
+  </script>
+</body>
+</html>
