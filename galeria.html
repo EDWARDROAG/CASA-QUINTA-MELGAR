@@ -21,8 +21,29 @@
     .close-btn{ top:20px; right:30px; }
     .prev{ left:10px; top:50%; transform:translateY(-50%) }
     .next{ right:10px; top:50%; transform:translateY(-50%) }
+
+    .boton-atras {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.boton-atras:hover {
+  background-color: #0056b3;
+}
+
   </style>
 </head>
+<button id="btnAtras" class="boton-atras">⬅️ Atrás</button>
 <body>
   <h1>Galería Casa Quinta Melgar</h1>
   <div class="fotos-grid" id="galeria">
@@ -40,13 +61,44 @@
   <script>
     // Lista de imágenes (puedes generar esto con tu script)
     const imagenes = [
-      "img/piscina.jpeg",
-      "img/habitaciones.jpeg",
-      "img/zona_bbq.jpeg",
-      "img/zonas_verdes.jpeg",
-      "img/casa_completa.jpeg",
-      "img/diversion_familiar.jpeg"
-    ];
+   "img/fondo.jpeg",
+  "img/imagen (10).jpeg",
+  "img/imagen (11).jpeg",
+  "img/imagen (12).jpeg",
+  "img/imagen (13).jpeg",
+  "img/imagen (14).jpeg",
+  "img/imagen (15).jpeg",
+  "img/imagen (16).jpeg",
+  "img/imagen (17).jpeg",
+  "img/imagen (18).jpeg",
+  "img/imagen (19).jpeg",
+  "img/imagen (2).jpeg",
+  "img/imagen (20).jpeg",
+  "img/imagen (21).jpeg",
+  "img/imagen (22).jpeg",
+  "img/imagen (23).jpeg",
+  "img/imagen (24).jpeg",
+  "img/imagen (25).jpeg",
+  "img/imagen (26).jpeg",
+  "img/imagen (27).jpeg",
+  "img/imagen (28).jpeg",
+  "img/imagen (29).jpeg",
+  "img/imagen (3).jpeg",
+  "img/imagen (30).jpeg",
+  "img/imagen (4).jpeg",
+  "img/imagen (5).jpeg",
+  "img/imagen (6).jpeg",
+  "img/imagen (7).jpeg",
+  "img/imagen (8).jpeg",
+  "img/imagen (9).jpeg",
+  "img/imagen.jpeg"
+];
+
+document.getElementById("btnAtras").addEventListener("click", function() {
+  window.location.href = "index.html"; // Cambia el nombre del archivo si tu página principal tiene otro nombre
+});
+
+
 
     const galeria = document.getElementById('galeria');
     imagenes.forEach(src => {

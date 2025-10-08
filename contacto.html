@@ -1,0 +1,93 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contáctanos | Casa Quinta Melgar</title>
+
+  <meta name="description" content="Reserva tu estadía en Casa Quinta Melgar. Piscina privada, zona BBQ y toda la comodidad para tu descanso.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="150x150" href="logos/logo.png">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logos/logo.png" alt="Logo Casa Quinta Melgar">
+      <span>Casa Quinta Melgar</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#inicio">Inicio</a></li>
+      <li><a href="index.html#accesos">Accesos</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="titulo-principal">Contáctanos y Reserva</h1>
+      <p class="slogan">Tu descanso ideal comienza con un mensaje 🌴</p>
+    </div>
+  </header>
+
+  <!-- FORMULARIO -->
+  <section id="contacto" class="reserva-section">
+    <h2>Reserva tu estadía con nosotros</h2>
+    <p>Déjanos tus datos y te confirmaremos disponibilidad lo antes posible.</p>
+
+    <form id="formReserva" action="https://formsubmit.co/tucasaquintamelgar@gmail.com" method="POST" onsubmit="avisoWhatsapp()">
+      <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <input type="tel" name="telefono" placeholder="Tu número de WhatsApp" required>
+      <input type="date" name="fecha_ingreso" required>
+      <input type="date" name="fecha_salida" required>
+      <textarea name="mensaje" placeholder="Detalles o peticiones especiales" rows="4"></textarea>
+      <button type="submit" class="btn-reservar">Reservar mi estadía</button>
+
+      <!-- Configuración oculta de FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.tucasaquintamelgar.com.co/gracias.html">
+    </form>
+  </section>
+
+  <!-- BOTÓN DE RETORNO -->
+  <div class="botones-informacion">
+    <a href="index.html" class="btn-info">⬅️ Volver al Inicio</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>¡Tu momento de descanso comienza aquí! <br> Casa Quinta en Melgar – Reserva ya</p>
+    <div class="social-box">
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61580426685856" target="_blank" class="social-item">
+          <img src="logos/facebook.png" alt="Facebook"><span>Facebook</span>
+        </a>
+        <a href="https://www.tiktok.com/@casa.quinta.melgar" target="_blank" class="social-item">
+          <img src="logos/tiktok.png" alt="TikTok"><span>TikTok</span>
+        </a>
+        <a href="https://instagram.com/tuPagina" target="_blank" class="social-item">
+          <img src="logos/instagram.png" alt="Instagram"><span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT WHATSAPP -->
+  <script>
+    function avisoWhatsapp() {
+      const numero = "573125475619";
+      const mensaje = "me interesa reservar";
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      setTimeout(() => { window.open(url, "_blank"); }, 1000);
+    }
+  </script>
+</body>
+</html>
+```

@@ -1,0 +1,96 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracias por tu reserva - Casa Quinta Melgar</title>
+  <link rel="icon" type="image/png" sizes="150x150" href="logos/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: url('img/fondo.jpeg') no-repeat center center/cover;
+      background-attachment: fixed;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px #00ffe0, 0 0 20px #00aaff, 0 0 30px #0066ff;
+      animation: brillo 2s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    @keyframes brillo {
+      from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00aaff; }
+      to   { text-shadow: 0 0 20px #00ffff, 0 0 30px #0077ff; }
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #eaffff;
+      margin-bottom: 40px;
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: #fff;
+      background: linear-gradient(45deg, #00b4d8, #009688);
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .boton:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #009688, #00b4d8);
+    }
+
+    .icono {
+      width: 28px;
+      height: 28px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1em;
+      color: #eaffff;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>¡Gracias por tu reserva!</h1>
+  <p>Hemos recibido tu solicitud correctamente.<br>
+  En breve te contactaremos para confirmar los detalles.</p>
+
+  <a href="index.html" class="boton">
+    <img src="logos/home.png" class="icono"> Volver al inicio
+  </a>
+
+  <a href="https://wa.me/573125475619?text=Hola%2C%20acabo%20de%20realizar%20una%20reserva%20en%20la%20Casa%20Quinta%20Melgar" 
+     target="_blank" 
+     class="boton">
+    <img src="logos/whatsapp.png" class="icono"> Enviar mensaje por WhatsApp
+  </a>
+
+  <footer>Casa Quinta Melgar © 2025</footer>
+</body>
+</html>
+```
