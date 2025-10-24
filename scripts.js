@@ -222,10 +222,19 @@ document.addEventListener('DOMContentLoaded', function() {
     btnAudio.style.display = 'none';
   });
 });
-fetch('https://api.countapi.xyz/hit/casaquinta-melgar/visitas')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('contadorVisitas').innerText = data.value;
-  })
-  .catch(error => console.error('Error al obtener el contador:', error));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contador = document.getElementById('contadorVisitas');
+  if (!contador) {
+    console.warn('⚠️ No se encontró el elemento #contadorVisitas en el HTML.');
+    return;
+  }
+
+  fetch('https://api.countapi.xyz/hit/casaquinta-melgar/visitas')
+    .then(res => res.json())
+    .then(data => {
+      contador.innerText = data.value;
+    })
+    .catch(err => console.error('❌ Error al obtener el contador:', err));
+});
 
