@@ -222,3 +222,10 @@ document.addEventListener('DOMContentLoaded', function() {
     btnAudio.style.display = 'none';
   });
 });
+fetch('https://api.countapi.xyz/hit/casaquinta-melgar/visitas')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('contadorVisitas').innerText = data.value;
+  })
+  .catch(error => console.error('Error al obtener el contador:', error));
+

@@ -41,23 +41,7 @@
     <div class="modal-content"> 
       <video id="introVideo" autoplay muted playsinline>
          <source src="videos/video_inicio.mp4" type="video/mp4"> Tu navegador no soporta video HTML5. </video>
-        <div id="btnAudio" style="
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  z-index: 9999;
-  display: none;
-">
-  🔊 Activar audio
-</div> 
+        <div id="btnAudio">🔊 Activar audio</div>
         </div>
          </div>
 
@@ -240,14 +224,6 @@
   👁️‍🗨️ <strong>Eres el visitante numero :</strong> <span id="contadorVisitas">0</span>
 </div>
 
-<script>
-  fetch('https://api.countapi.xyz/hit/casaquinta-melgar/visitas')
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('contadorVisitas').innerText = data.value;
-    })
-    .catch(error => console.error('Error al obtener el contador:', error));
-</script>
 
   <!-- FOOTER -->
   <footer id="contacto">
