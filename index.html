@@ -8,7 +8,7 @@
   <!-- SEO y descripción -->
   <meta name="description" content="Casa Quinta Melgar: disfruta piscina privada, zona BBQ y espacios amplios. Ideal para familias y grupos. Reserva por WhatsApp.">
   <meta name="keywords" content="casa quinta, melgar, piscina privada, arriendo, descanso, alojamiento">
-  <meta name="author" content="Casa Quinta Melgar">
+  <meta name="author" content="Soluciones La Makinet">
 
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -41,7 +41,24 @@
     <div class="modal-content"> 
       <video id="introVideo" autoplay muted playsinline>
          <source src="videos/video_inicio.mp4" type="video/mp4"> Tu navegador no soporta video HTML5. </video>
-         </div>
+        <div id="btnAudio" style="
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 9999;
+  display: none;
+">
+  🔊 Activar audio
+</div> 
+        </div>
          </div>
 
   <!-- Modal Mini Tour -->
@@ -219,6 +236,19 @@
     </a>
   </div>
 
+  <div style="text-align:center; color:#00ffcc; font-size:18px; margin-top:15px;">
+  👁️‍🗨️ <strong>Eres el visitante numero :</strong> <span id="contadorVisitas">0</span>
+</div>
+
+<script>
+  fetch('https://api.countapi.xyz/hit/casaquinta-melgar/visitas')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('contadorVisitas').innerText = data.value;
+    })
+    .catch(error => console.error('Error al obtener el contador:', error));
+</script>
+
   <!-- FOOTER -->
   <footer id="contacto">
     <p>¡Tu momento de descanso comienza aquí! <br> Casa Quinta en Melgar – Reserva ya</p>
@@ -239,5 +269,6 @@
 
   <!-- Scripts -->
   <script src="scripts.js" defer></script>
+  <footer>Casa Quinta Melgar © 2025</footer>
 </body>
 </html>

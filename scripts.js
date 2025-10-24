@@ -198,3 +198,27 @@ window.addEventListener("scroll", () => {
     navbar.style.padding = "12px 40px";
   }
 });
+
+// 🔊 Control del botón de audio del video de inicio
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('introVideo');
+  const btnAudio = document.getElementById('btnAudio');
+  const videoModal = document.getElementById('videoModal');
+
+  if (!video || !btnAudio || !videoModal) return;
+
+  // Mostrar botón si el video está silenciado
+  video.addEventListener('play', () => {
+    if (video.muted) {
+      btnAudio.style.display = 'block';
+    }
+  });
+
+  // Evitar que el clic del botón cierre el modal
+  btnAudio.addEventListener('click', (event) => {
+    event.stopPropagation(); // evita cierre del modal
+    video.muted = false;
+    video.volume = 1.0;
+    btnAudio.style.display = 'none';
+  });
+});
